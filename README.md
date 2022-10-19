@@ -1,28 +1,20 @@
-# LabelSemantics
-> Code for Label Semantics for Few Shot Named Entity Recognition
-
-经过修改，现在的方案已与原paper中思路一样，采用两个独立Bert Encoder分别对token和label进行编码
-
-
-> 关于数据集，内部数据不可共享。建议使用resume以及其他开源数据做个简单实验
+# CSER
 
 ## 代码结构如下
 ```
-├── fewshot.json
-├── LabelSemantics_fewshot.py
-    ├── finetune in target dataset
-├── LabelSemantics.py
-    ├── pretrain in source dataset
-├── pretrain.json
-```
+├── datasets
+    ├── MATRES
+    ├── TimeBank-dense
+├── pretrained_models
+    ├── roberta-base
+    ├── roberta-large
+├── SourceCode
+    ├── data_loader
+    ├── models
+    ├── utils
+    ├── IE.py
+    ├── main.py
 
-
-
-## 实验结果如下
-
-> 我们在自己的数据集上做了实验，基本效果如下。
-
-|  K-Shots | 5-shot | 20-shot | 50-shot | 100-shot | 200-shot |  500-shot| Full dataset |
-|  :----:  | :----:  | :----:  | :----:  | :----:  | :----:  | :----:  |  :----:  | 
-| F1  | 0.53 |0.61 | 0.64 | 0.67 | 0.71 |0.76 | 0.89 |
-| epoch  | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
+> Unzip the compressed file dataset into the folder datasets
+> python main.py --dataset TBD --roberta_type roberta-large --bs 16
+> python main.py --dataset MATRES --roberta_type roberta-large --bs 16
